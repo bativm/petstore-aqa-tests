@@ -7,9 +7,10 @@ on:
     inputs:
       groups:
         type: choice
-        description: "Які TestNG групи запускати? (залиш порожнім — всі)"
+        description: "Які групи запускати?"
         required: false
         options:
+          - all tests
           - smoke
           - sanity
           - smoke,sanity
@@ -41,11 +42,11 @@ jobs:
           BASE_URL: ${{ secrets.BASE_URL }}
         run: |
           GROUPS="${{ github.event.inputs.groups }}"
-          if [ -n "$GROUPS" ]; then
+          if [ -n "$GROUPS" ] && [ "$GROUPS" != "all tests" ]; then
             echo "Running TestNG groups: $GROUPS"
             ./gradlew clean test -Dgroups="$GROUPS"
           else
-            echo "Running all tests (no groups specified)"
+            echo "Running all tests"
             ./gradlew clean test
           fi
 
