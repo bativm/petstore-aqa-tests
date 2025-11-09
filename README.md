@@ -1,1 +1,1 @@
-# [Report](https://bativm.github.io/petstore-aqa-tests/)
+# https://bativm.github.io/petstore-aqa-tests/
