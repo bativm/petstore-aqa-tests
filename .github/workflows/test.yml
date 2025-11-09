@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-        run: ./gradlew clean test
+        run: ./gradlew clean test -Dgroups="smoke,sanity"
 
       - name: Generate Allure Report
         run: ./gradlew allureReport
