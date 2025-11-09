@@ -1,0 +1,1 @@
+[{"uid":"e73ebb6af2daabf8","name":"getStoreInventory","time":{"start":1762721010285,"stop":1762721012654,"duration":2369},"status":"passed","severity":"normal"},{"uid":"245d81c0321e38a0","name":"logoutUser","time":{"start":1762721012740,"stop":1762721013011,"duration":271},"status":"passed","severity":"normal"}]
