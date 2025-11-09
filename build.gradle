@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '3.0.0'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.rest-assured:rest-assured:5.5.6'
+    testImplementation 'org.testng:testng:7.11.0'
+    testImplementation 'io.qameta.allure:allure-testng:2.30.0'
+}
+
+    tasks.test {
+        systemProperties(System.getProperties())
+        useTestNG {
+            def groups = System.getProperty("groups")
+            if (groups != null) {
+                includeGroups(groups)
+            }
+        }
+        ignoreFailures = true
+    }
