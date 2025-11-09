@@ -16,13 +16,13 @@ dependencies {
     testImplementation 'io.qameta.allure:allure-testng:2.30.0'
 }
 
-    tasks.test {
-        systemProperties(System.getProperties())
-        useTestNG {
-            def groups = System.getProperty("groups")
-            if (groups != null) {
-                includeGroups(groups)
-            }
+tasks.test {
+    systemProperties(System.getProperties())
+    useTestNG {
+        def groups = System.getProperty("groups")
+        if (groups != null) {
+            includeGroups(groups)
         }
-        ignoreFailures = true
     }
+    ignoreFailures = true
+}

@@ -32,11 +32,9 @@ jobs:
         run: ./gradlew clean test
 
       - name: Generate Allure Report
-        if: always()
         run: ./gradlew allureReport
 
       - name: Deploy to GitHub Pages
-        if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
