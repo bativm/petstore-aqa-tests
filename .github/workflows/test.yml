@@ -3,17 +3,6 @@ name: Test Run
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
-    inputs:
-      groups:
-        type: choice
-        description: "Які групи запускати?"
-        required: false
-        options:
-          - all
-          - smoke
-          - sanity
-          - smoke,sanity
 
 permissions:
   contents: write
@@ -40,15 +29,7 @@ jobs:
       - name: Run tests
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-        run: |
-          GROUPS="${{ github.event.inputs.groups }}"
-          if [ -n "$GROUPS" ] && [ "$GROUPS" != "all" ]; then
-            echo "Running TestNG groups: $GROUPS"
-            ./gradlew clean test -Dgroups="$GROUPS"
-          else
-            echo "Running all tests"
-            ./gradlew clean test
-          fi
+        run: ./gradlew clean test
 
       - name: Generate Allure Report
         run: ./gradlew allureReport
